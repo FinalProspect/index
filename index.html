@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Service & Pricing Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    .section { margin-top: 30px; }
+    .total { font-size: 20px; margin-top: 20px; font-weight: bold; }
+    input[type="number"], input[type="text"], input[type="email"], input[type="tel"], select {
+      padding: 5px;
+      width: 100%;
+      max-width: 300px;
+    }
+    button, .calendly-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    button:hover, .calendly-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Service & Pricing Calculator</h1>
+
+  <form id="pricing-form" action="https://formspree.io/f/mwplrzaw" method="POST">
+
+    <label>Your Name:</label>
+    <input type="text" name="name" required>
+
+    <label>Your Email:</label>
+    <input type="email" name="email" required>
+
+    <label>Your Phone Number:</label>
+    <input type="tel" name="phone" required placeholder="(123) 456-7890">
+
+    <!-- Carpet & Upholstery -->
+    <div class="section">
+      <h2>Carpet & Upholstery Services</h2>
+
+      <label>Basic Bedroom Carpet Cleaning ($75/room):
+        <input type="number" name="basic_carpet_rooms" data-price="75" min="0">
+      </label>
+
+      <label>Deep Carpet Cleaning & Stain Removal ($100/room):
+        <input type="number" name="deep_carpet_rooms" data-price="100" min="0">
+      </label>
+
+      <label>Steam Cleaning ($125/room):
+        <input type="number" name="steam_cleaning" data-price="125" min="0">
+      </label>
+
+      <label>Shampooing ($200 flat):
+        <input type="checkbox" name="shampooing" data-price="200">
+      </label>
+
+      <label>Sofa & Couch Cleaning ($180 flat):
+        <input type="checkbox" name="sofa" data-price="180">
+      </label>
+
+      <label>Recliner Cleaning ($90 flat):
+        <input type="checkbox" name="recliner" data-price="90">
+      </label>
+
+      <label>Mattress Cleaning:
+        <select name="mattress">
+          <option value="0">Select</option>
+          <option value="100">Twin - $100</option>
+          <option value="115">Full - $115</option>
+          <option value="120">Queen - $120</option>
+          <option value="140">King - $140</option>
+        </select>
+      </label>
+
+      <label>Pet Stain & Odor Removal ($100):
+        <input type="checkbox" name="pet_stain" data-price="100">
+      </label>
+
+      <label>Leather Furniture Cleaning & Conditioning ($150):
+        <input type="checkbox" name="leather" data-price="150">
+      </label>
+
+      <label>Stain Protection & Fabric Guard ($90):
+        <input type="checkbox" name="stain_guard" data-price="90">
+      </label>
+    </div>
+
+    <!-- Packages -->
+    <div class="section">
+      <h2>Packages</h2>
+
+      <label>Move-In/Move-Out Package ($300):
+        <input type="checkbox" name="move_package" data-price="300">
+      </label>
+
+      <label>Commercial Maintenance Package:
+        <select name="commercial_package">
+          <option value="0">Select</option>
+          <option value="1000">Tier 1 - $1,000</option>
+          <option value="2000">Tier 2 - $2,000</option>
+          <option value="3000">Tier 3 - $3,000</option>
+        </select>
+      </label>
+
+      <label>Premium Protection Package ($400):
+        <input type="checkbox" name="premium_protection" data-price="400">
+      </label>
+
+      <label>Rug & Upholstery Package ($500):
+        <input type="checkbox" name="rug_package" data-price="500">
+      </label>
+    </div>
+
+    <!-- Add-ons -->
+    <div class="section">
+      <h2>Add-ons</h2>
+
+      <label>Carpet Protection ($30):
+        <input type="checkbox" name="carpet_protection" data-price="30">
+      </label>
+
+      <label>Carpet Deodorizer ($20):
+        <input type="checkbox" name="carpet_deodorizer" data-price="20">
+      </label>
+
+      <label>Carpet Repair & Stretching ($100):
+        <input type="checkbox" name="carpet_repair" data-price="100">
+      </label>
+
+      <label>Color Restoration & Dye ($200):
+        <input type="checkbox" name="color_restore" data-price="200">
+      </label>
+
+      <label>Area Rug Cleaning ($85):
+        <input type="checkbox" name="rug_cleaning" data-price="85">
+      </label>
+
+      <label>Epoxy Floor Cleaning ($150):
+        <input type="checkbox" name="epoxy" data-price="150">
+      </label>
+
+      <label>Slip Resistant Coating ($125):
+        <input type="checkbox" name="slip_coating" data-price="125">
+      </label>
+
+      <label>Odor & Bacteria Elimination ($100):
+        <input type="checkbox" name="odor_bacteria" data-price="100">
+      </label>
+
+      <label>Sanitization & Disinfectant ($100):
+        <input type="checkbox" name="sanitize" data-price="100">
+      </label>
+
+      <label>Pet Odor & Stain Treatment ($200):
+        <input type="checkbox" name="pet_treatment" data-price="200">
+      </label>
+
+      <label>Allergen & Dust Mite Treatment ($250):
+        <input type="checkbox" name="allergen" data-price="250">
+      </label>
+    </div>
+
+    <!-- Tile & Grout -->
+    <div class="section">
+      <h2>Tile & Grout</h2>
+
+      <label>Deep Tile & Grout Cleaning ($175):
+        <input type="checkbox" name="tile_clean" data-price="175">
+      </label>
+
+      <label>Grout Sealing & Protection ($175):
+        <input type="checkbox" name="grout_seal" data-price="175">
+      </label>
+
+      <label>Grout Color Sealing ($200):
+        <input type="checkbox" name="grout_color" data-price="200">
+      </label>
+
+      <label>Tile & Grout Stain Removal ($175):
+        <input type="checkbox" name="tile_stain" data-price="175">
+      </label>
+    </div>
+
+    <!-- Hard Floor -->
+    <div class="section">
+      <h2>Hard Floor Surface Cleaning</h2>
+
+      <label>Natural Stone Cleaning & Polishing ($200):
+        <input type="checkbox" name="stone_polish" data-price="200">
+      </label>
+
+      <label>Hardwood Floor Buffing & Cleaning ($175):
+        <input type="checkbox" name="hardwood" data-price="175">
+      </label>
+
+      <label>Vinyl & Luxury Tile Cleaning ($150):
+        <input type="checkbox" name="vinyl" data-price="150">
+      </label>
+
+      <label>Concrete/Garage Cleaning & Sealing ($200):
+        <input type="checkbox" name="garage_clean" data-price="200">
+      </label>
+    </div>
+
+    <!-- Total Display -->
+    <div class="total">
+      Total Estimate: $<span id="total">0.00</span>
+      <input type="hidden" name="total_estimate" id="total_input" value="0.00">
+    </div>
+
+    <button type="submit">Send My Estimate</button>
+  </form>
+
+  <!-- Calendly Booking -->
+  <div class="section">
+    <h2>Book Your Appointment</h2>
+    <a href="https://calendly.com/nathaniel-finalprospect/carpet-cleaning-time" target="_blank" class="calendly-button">Book Now</a>
+  </div>
+
+  <!-- Stripe Checkout -->
+  <div class="section">
+    <h2>Checkout</h2>
+    <p>You can also pay now to reserve your spot:</p>
+    <button id="checkout-button">Checkout</button>
+  </div>
+
+  <!-- Stripe Script & Calculator -->
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    const form = document.getElementById('pricing-form');
+    const totalDisplay = document.getElementById('total');
+    const totalInput = document.getElementById('total_input');
+
+    function calculateTotal() {
+      let total = 0;
+      const inputs = form.querySelectorAll('input, select');
+
+      inputs.forEach(input => {
+        const price = parseFloat(input.dataset.price || input.value);
+        if (input.type === "checkbox" && input.checked) {
+          total += price;
+        } else if (input.type === "number" && input.value) {
+          total += parseInt(input.value) * price;
+        } else if (input.tagName === "SELECT" && input.value && input.value !== "0") {
+          total += parseFloat(input.value);
+        }
+      });
+
+      totalDisplay.textContent = total.toFixed(2);
+      totalInput.value = total.toFixed(2);
+    }
+
+    form.addEventListener('change', calculateTotal);
+    form.addEventListener('input', calculateTotal);
+
+    // Stripe Checkout
+    const stripe = Stripe('pk_test_12345'); // Replace with your real Stripe public key
+
+    document.getElementById('checkout-button').addEventListener('click', function () {
+      stripe.redirectToCheckout({
+        lineItems: [{
+          price: 'price_12345', // Replace with your actual Stripe Price ID
+          quantity: 1,
+        }],
+        mode: 'payment',
+        successUrl: window.location.href + '?success=true',
+        cancelUrl: window.location.href + '?canceled=true',
+      }).then(function (result) {
+        if (result.error) {
+          alert(result.error.message);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
