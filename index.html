@@ -284,6 +284,23 @@
       });
     });
   </script>
+ const stripe = Stripe('<?= process.env.pk_test_51RAy26R9m1TJvmjAulrtTGD6AJu9WFvOwXe2kf6nLSAEI2sPawkzTU458di6ZnB8u3zvQ653jpW7RHT9Em1SgP5c00HObrvcj2 ?>'); // Will be replaced automatically by Vercel
+
+  document.getElementById('checkout-button').addEventListener('click', async () => {
+    const response = await fetch('/api/create-checkout-session', {
+      method: 'POST'
+    });
+
+    const session = await response.json();
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id
+    });
+
+    if (result.error) {
+      alert(result.error.message);
+    }
+  });
 
 </body>
 </html>
